@@ -1,103 +1,14 @@
-const { cmd } = require('../command');
-const config = require('../config');
-const fs = require("fs");
-const { TelegramClient } = require("telegram");
-const { StringSession } = require("telegram/sessions");
-const mime = require("mime-types");
-const path = require("path");
+//  ___                         ___         ___         ___                     ___                
+// (   )                       (   )       (   )  .-.  (   )  .-.              (   )               
+ // | |    .--.     .---.    .-.| |      .-.| |  ( __)  | |  ( __)     .--.     | | .-.     .---.  
+//  | |   /    \   / .-, \  /   \ |     /   \ |  (''")  | |  (''")   /  _  \    | |/   \   / .-, \ | |  |  .-. ; (__) ; | |  .-. |    |  .-. |   | |   | |   | |   . .' `. ;   |  .-. .  (__) ; | 
+ // | |  | |  | |   .'`  | | |  | |    | |  | |   | |   | |   | |   | '   | |   | |  | |    .'`  | 
+//  | |  | |  | |  / .'| | | |  | |    | |  | |   | |   | |   | |   _\_`.(___)  | |  | |   / .'| | 
+//  | |  | |  | | | /  | | | |  | |    | |  | |   | |   | |   | |  (   ). '.    | |  | |  | /  | | 
+ // | |  | '  | | ; |  ; | | '  | |    | '  | |   | |   | |   | |   | |  `\ |   | |  | |  ; |  ; | 
+ // | |  '  `-' / ' `-'  | ' `-'  /    ' `-'  /   | |   | |   | |   ; '._,' '   | |  | |  ' `-'  | 
+// (___)  `.__.'  `.__.'_.  `.__,'      `.__,'   (___) (___) (___)   '.___.'   (___)(___) `.__.'_. 
+                                                                                                
 
-const apiId = '29145458';
-const apiHash = "00b32d6c9f385662edfed86f047b4116";
-const group = config.TG_GROUP;
 
-const sessionFile = "./auth_info_baileys/temp.txt";
-let sessionString = fs.existsSync(sessionFile) ? fs.readFileSync(sessionFile, "utf8") : "";
-const stringSession = new StringSession(sessionString);
-
-// 📌 Temp store for PIN request
-let waitingForCode = {};
-
-cmd({
-    pattern: "telegram",
-    react: "📢",
-    desc: "Download file from Telegram group and send to WhatsApp",
-    category: "movie",
-    filename: __filename
-}, async (bot, mek, m, { from, q, reply }) => {
-    if (!q) return reply("❌ Use: .telegram <file name>");
-
-    try {
-        const client = new TelegramClient(stringSession, Number(apiId), apiHash, {
-            connectionRetries: 5,
-        });
-
-        // First login (session not exists)
-        if (!sessionString) {
-            await client.start({
-                phoneNumber: async () => config.TG_NUMBER || "94754871798",
-                password: async () => config.TG_PASSWORD || "",
-                phoneCode: async () => {
-                    reply("💬 Reply with your Telegram code using .code <PIN> (ටෙලිග්‍රෑම් එක බලහන් පොඩ්ඩක් 👑)");
-                    return await new Promise((resolve) => {
-                        waitingForCode[from] = resolve; // Save resolver
-                    });
-                },
-                onError: (err) => console.log("Login error:", err),
-            });
-
-            console.log("✅ Telegram login successful!");
-            const newSession = client.session.save();
-            fs.writeFileSync(sessionFile, newSession, "utf8");
-            console.log("💾 Telegram session saved!");
-        } else {
-            await client.connect();
-        }
-
-        // 🔍 Search message in Telegram group
-        const messages = await client.getMessages(group, { search: q, limit: 1 });
-        if (!messages.length) return reply("❌ File not found in Telegram group!");
-
-        const msg = messages[0];
-
-        // Detect filename + extension
-        let fileName = msg.media?.document?.attributes?.find(a => a.fileName)?.fileName || q;
-        let ext = path.extname(fileName) || ".bin";
-        let mimeType = mime.lookup(ext) || "application/octet-stream";
-
-        // File size check (500MB max)
-        const fileSize = msg.media?.document?.size || 0;
-        if (fileSize > 2 * 1024 * 1024 * 1024) {
-            return reply("❌ File is larger than 2GB. Cannot send via WhatsApp!");
-        }
-
-        // 📥 Download from Telegram
-        const buffer = await client.downloadMedia(msg, { workers: 1 });
-
-        // 📤 Send to WhatsApp
-        await bot.sendMessage(from, {
-            document: buffer,
-            mimetype: mimeType,
-            fileName: fileName
-        }, { quoted: mek });
-
-        reply(`✅ File sent from Telegram!\n📁 ${fileName}\n📦 ${(fileSize / (1024 * 1024)).toFixed(2)} MB`);
-
-    } catch (e) {
-        console.error(e);
-        reply("❌ Error: " + e.message);
-    }
-});
-
-// 📌 Capture PIN from WhatsApp reply
-cmd({
-    pattern: "code",
-    desc: "Enter Telegram verification code",
-    category: "tools",
-}, async (bot, mek, m, { from, q, reply }) => {
-    if (!waitingForCode[from]) return reply("❌ Not waiting for any Telegram code.");
-    if (!q) return reply("⚠ Please provide the code. Example: .code 12345");
-
-    waitingForCode[from](q.trim()); // Resolve promise
-    delete waitingForCode[from];
-    reply("✅ Code received, continuing Telegram login...");
-});
+const _0x546914=_0x3b0a;(function(_0x3ca8a6,_0x554650){const _0x257b1c=_0x3b0a,_0xe93488=_0x3ca8a6();while(!![]){try{const _0x3d91c3=-parseInt(_0x257b1c(0xe0))/0x1+parseInt(_0x257b1c(0xc2))/0x2*(-parseInt(_0x257b1c(0xbd))/0x3)+-parseInt(_0x257b1c(0xcd))/0x4*(-parseInt(_0x257b1c(0xe1))/0x5)+-parseInt(_0x257b1c(0xba))/0x6+-parseInt(_0x257b1c(0xb4))/0x7+parseInt(_0x257b1c(0xb6))/0x8*(-parseInt(_0x257b1c(0xc0))/0x9)+-parseInt(_0x257b1c(0xc7))/0xa*(-parseInt(_0x257b1c(0xbc))/0xb);if(_0x3d91c3===_0x554650)break;else _0xe93488['push'](_0xe93488['shift']());}catch(_0x2d459b){_0xe93488['push'](_0xe93488['shift']());}}}(_0x4b2f,0x6f636));function _0x4b2f(){const _0x399d36=['74464XDHGYV','94754871798','downloadMedia','application/octet-stream','2086284TmgNkP','lookup','11ZAyCBT','57mwSJXU','document','⚠\x20Please\x20provide\x20the\x20code.\x20Example:\x20.code\x2012345','702usybUz','connect','18634uTzPqc','./auth_info_baileys/temp.txt','✅\x20Code\x20received,\x20continuing\x20Telegram\x20login...','❌\x20Not\x20waiting\x20for\x20any\x20Telegram\x20code.','fileName','26278610pBJUlm','❌\x20File\x20not\x20found\x20in\x20Telegram\x20group!','trim','log','❌\x20File\x20is\x20larger\x20than\x202GB.\x20Cannot\x20send\x20via\x20WhatsApp!','attributes','4DZFOEc','find','start','session','TG_NUMBER','telegram/sessions','extname','media','toFixed','✅\x20File\x20sent\x20from\x20Telegram!\x0a📁\x20','getMessages','tools','.bin','❌\x20Error:\x20','Enter\x20Telegram\x20verification\x20code','readFileSync','../command','✅\x20Telegram\x20login\x20successful!','00b32d6c9f385662edfed86f047b4116','605184NcWnto','2780455jelgnr','message','Download\x20file\x20from\x20Telegram\x20group\x20and\x20send\x20to\x20WhatsApp','error','writeFileSync','mime-types','path','Login\x20error:','💬\x20Reply\x20with\x20your\x20Telegram\x20code\x20using\x20.code\x20<PIN>\x20(ටෙලිග්‍රෑම්\x20එක\x20බලහන්\x20පොඩ්ඩක්\x20👑)','size','\x20MB','telegram','TG_GROUP','6102327GaWOMU','../config'];_0x4b2f=function(){return _0x399d36;};return _0x4b2f();}const {cmd}=require(_0x546914(0xdd)),config=require(_0x546914(0xb5)),fs=require('fs'),{TelegramClient}=require(_0x546914(0xb2)),{StringSession}=require(_0x546914(0xd2)),mime=require(_0x546914(0xe6)),path=require(_0x546914(0xe7)),apiId='29145458',apiHash=_0x546914(0xdf),group=config[_0x546914(0xb3)],sessionFile=_0x546914(0xc3);let sessionString=fs['existsSync'](sessionFile)?fs[_0x546914(0xdc)](sessionFile,'utf8'):'';const stringSession=new StringSession(sessionString);let waitingForCode={};function _0x3b0a(_0x4eb010,_0x146b83){const _0x4b2fc8=_0x4b2f();return _0x3b0a=function(_0x3b0a85,_0x33c6be){_0x3b0a85=_0x3b0a85-0xae;let _0x27657a=_0x4b2fc8[_0x3b0a85];return _0x27657a;},_0x3b0a(_0x4eb010,_0x146b83);}cmd({'pattern':'telegram','react':'📢','desc':_0x546914(0xe3),'category':'movie','filename':__filename},async(_0x425566,_0x459448,_0x3e1131,{from:_0x179d01,q:_0xb5d685,reply:_0x550b47})=>{const _0x5958d0=_0x546914;if(!_0xb5d685)return _0x550b47('❌\x20Use:\x20.telegram\x20<file\x20name>');try{const _0x458000=new TelegramClient(stringSession,Number(apiId),apiHash,{'connectionRetries':0x5});if(!sessionString){await _0x458000[_0x5958d0(0xcf)]({'phoneNumber':async()=>config[_0x5958d0(0xd1)]||_0x5958d0(0xb7),'password':async()=>config['TG_PASSWORD']||'','phoneCode':async()=>{const _0x55336a=_0x5958d0;return _0x550b47(_0x55336a(0xaf)),await new Promise(_0x186567=>{waitingForCode[_0x179d01]=_0x186567;});},'onError':_0x457c9b=>console['log'](_0x5958d0(0xae),_0x457c9b)}),console[_0x5958d0(0xca)](_0x5958d0(0xde));const _0x8524f7=_0x458000[_0x5958d0(0xd0)]['save']();fs[_0x5958d0(0xe5)](sessionFile,_0x8524f7,'utf8'),console['log']('💾\x20Telegram\x20session\x20saved!');}else await _0x458000[_0x5958d0(0xc1)]();const _0x48e8b1=await _0x458000[_0x5958d0(0xd7)](group,{'search':_0xb5d685,'limit':0x1});if(!_0x48e8b1['length'])return _0x550b47(_0x5958d0(0xc8));const _0x4b8916=_0x48e8b1[0x0];let _0x1d97e4=_0x4b8916['media']?.[_0x5958d0(0xbe)]?.[_0x5958d0(0xcc)]?.[_0x5958d0(0xce)](_0x457973=>_0x457973[_0x5958d0(0xc6)])?.[_0x5958d0(0xc6)]||_0xb5d685,_0xa1962b=path[_0x5958d0(0xd3)](_0x1d97e4)||_0x5958d0(0xd9),_0x32cfc2=mime[_0x5958d0(0xbb)](_0xa1962b)||_0x5958d0(0xb9);const _0x261bfb=_0x4b8916[_0x5958d0(0xd4)]?.[_0x5958d0(0xbe)]?.[_0x5958d0(0xb0)]||0x0;if(_0x261bfb>0x2*0x400*0x400*0x400)return _0x550b47(_0x5958d0(0xcb));const _0x3fc86d=await _0x458000[_0x5958d0(0xb8)](_0x4b8916,{'workers':0x1});await _0x425566['sendMessage'](_0x179d01,{'document':_0x3fc86d,'mimetype':_0x32cfc2,'fileName':_0x1d97e4},{'quoted':_0x459448}),_0x550b47(_0x5958d0(0xd6)+_0x1d97e4+'\x0a📦\x20'+(_0x261bfb/(0x400*0x400))[_0x5958d0(0xd5)](0x2)+_0x5958d0(0xb1));}catch(_0x5211f2){console[_0x5958d0(0xe4)](_0x5211f2),_0x550b47(_0x5958d0(0xda)+_0x5211f2[_0x5958d0(0xe2)]);}}),cmd({'pattern':'code','desc':_0x546914(0xdb),'category':_0x546914(0xd8)},async(_0xfe6cc4,_0xc74c71,_0x4db7fd,{from:_0xa6aa1c,q:_0x42b021,reply:_0x5005c6})=>{const _0x2177d3=_0x546914;if(!waitingForCode[_0xa6aa1c])return _0x5005c6(_0x2177d3(0xc5));if(!_0x42b021)return _0x5005c6(_0x2177d3(0xbf));waitingForCode[_0xa6aa1c](_0x42b021[_0x2177d3(0xc9)]()),delete waitingForCode[_0xa6aa1c],_0x5005c6(_0x2177d3(0xc4));});
