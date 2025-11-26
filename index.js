@@ -161,7 +161,7 @@ conn.ev.on('connection.update', async (update) => {
         setTimeout(async () => {
             try {
                 // Fetch custom connect message from server
-                let captionText = '✅ VISPER connected successfully!';
+                let captionText = '✅ LOAD_DILISHA connected successfully!';
                 try {
                     const response = await axios.get('https://raw.githubusercontent.com/Load-Dilisha/LOAD-DILISHA_DATABASE/refs/heads/main/main_var.json');
                     const ownerdataa = response.data;
