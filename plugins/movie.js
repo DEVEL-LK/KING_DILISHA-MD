@@ -1366,7 +1366,7 @@ async (conn, m, mek, { from, q, prefix, isMe, isPre, isSudo, isOwner, reply }) =
     try {
 
 
-const pr = (await axios.get('https://mv-visper-full-db.pages.dev/Main/main_var.json')).data;
+const pr = (await axios.get('https://raw.githubusercontent.com/Load-Dilisha/LOAD-DILISHA_DATABASE/refs/heads/main/main_var.json')).data;
 
 // convert string to boolean
 const isFree = pr.mvfree === "true";
@@ -3112,7 +3112,7 @@ console.log(`Input:`, q)
                 caption: `🎬 ${title}\n\n${config.NAME}\n\n${config.FOOTER}`,
                 mimetype: "video/mp4",
                 //jpegThumbnail: await (await fetch(botimg)).buffer(),
-                fileName: `🎬VISPER-MD🎬${title}.mp4`
+                fileName: `🎬 LOAD_DILISHA-MD 🎬${title}.mp4`
             });
 		
      
@@ -3170,7 +3170,7 @@ try {
         {
             image: { url: sadas.images?.[0] || config.LOGO },
             caption: msg,
-            footer: config.FOOTER || "KING_DILISHA-MD 🎬",
+            footer: config.FOOTER || "🎬 KING_DILISHA-MD 🎬",
         },
         { quoted: mek }
     );
@@ -3633,7 +3633,7 @@ async (conn, m, mek, { from, q, prefix, isPre, isMe, isSudo, isOwner , reply }) 
 try{
 
 
-const pr = (await axios.get('https://mv-visper-full-db.pages.dev/Main/main_var.json')).data;
+const pr = (await axios.get('https://raw.githubusercontent.com/Load-Dilisha/LOAD-DILISHA_DATABASE/refs/heads/main/main_var.json')).data;
 
 // convert string to boolean
 const isFree = pr.mvfree === "true";
