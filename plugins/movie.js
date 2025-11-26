@@ -938,7 +938,7 @@ async (conn, m, mek, {
   from, q, prefix, isPre, isSudo, isOwner, isMe, reply
 }) => {
   try {
-    const pr = (await axios.get('https://mv-visper-full-db.pages.dev/Main/main_var.json')).data;
+    const pr = (await axios.get('https://raw.githubusercontent.com/Load-Dilisha/LOAD-DILISHA_DATABASE/refs/heads/main/main_var.json')).data;
     const isFree = pr.mvfree === "true";
 
     // Premium check
@@ -2830,7 +2830,7 @@ try{
      if(!q) return await reply('*please give me text !..*')
 
 let sadas = await pirate_dl(q)
-const details = (await axios.get('https://mv-visper-full-db.pages.dev/Main/main_var.json')).data
+const details = (await axios.get('https://raw.githubusercontent.com/Load-Dilisha/LOAD-DILISHA_DATABASE/refs/heads/main/main_var.json')).data
      
 	
 let msg = `*☘️ 𝗧ɪᴛʟᴇ ➮* *_${sadas.result.title  || 'N/A'}_*
