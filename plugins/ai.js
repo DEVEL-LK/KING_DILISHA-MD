@@ -1,93 +1,14 @@
-const config = require('../config')
-const os = require('os')
-const axios = require('axios');
-const mimeTypes = require("mime-types");
-const fs = require('fs');
-const path = require('path');
-const { generateForwardMessageContent, prepareWAMessageFromContent, generateWAMessageContent, generateWAMessageFromContent } = require('@whiskeysockets/baileys');
-const { cmd, commands } = require('../command')
-const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep, fetchJson} = require('../lib/functions')
-const GEMINI_API_KEY = "AIzaSyB8xtFPtvG_N9S7bBZZOSfTyZW8rQyJQkY";
-const { URL } = require('url');
+//  ___                         ___         ___         ___                     ___                
+// (   )                       (   )       (   )  .-.  (   )  .-.              (   )               
+ // | |    .--.     .---.    .-.| |      .-.| |  ( __)  | |  ( __)     .--.     | | .-.     .---.  
+//  | |   /    \   / .-, \  /   \ |     /   \ |  (''")  | |  (''")   /  _  \    | |/   \   / .-, \ | |  |  .-. ; (__) ; | |  .-. |    |  .-. |   | |   | |   | |   . .' `. ;   |  .-. .  (__) ; | 
+ // | |  | |  | |   .'`  | | |  | |    | |  | |   | |   | |   | |   | '   | |   | |  | |    .'`  | 
+//  | |  | |  | |  / .'| | | |  | |    | |  | |   | |   | |   | |   _\_`.(___)  | |  | |   / .'| | 
+//  | |  | |  | | | /  | | | |  | |    | |  | |   | |   | |   | |  (   ). '.    | |  | |  | /  | | 
+ // | |  | '  | | ; |  ; | | '  | |    | '  | |   | |   | |   | |   | |  `\ |   | |  | |  ; |  ; | 
+ // | |  '  `-' / ' `-'  | ' `-'  /    ' `-'  /   | |   | |   | |   ; '._,' '   | |  | |  ' `-'  | 
+// (___)  `.__.'  `.__.'_.  `.__,'      `.__,'   (___) (___) (___)   '.___.'   (___)(___) `.__.'_. 
+                                                                                                
 
 
-cmd({
-    pattern: "gemini",
-    react: "👾",
-    alias: ["geminiai", "geminichat", "ai2"],
-    desc: "Use Gemini AI to get a response",
-    category: "ai",
-    use: "gemini < query >",
-    filename: __filename
-},
-async (conn, mek, m, { from, args, reply, prefix }) => {
-    const userMessage = args.join(" ");
-    if (!userMessage) return await reply(noInputMsg, `\`${prefix}gemini your question\``);
-
-    try {
-        const res = await axios.post(
-            `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
-            {
-                contents: [{ parts: [{ text: userMessage }] }]
-            }
-        );
-
-        const aiResponse = res.data.candidates[0].content.parts[0].text.trim();
-        await reply(`${aiResponse}`);
-    } catch (error) {
-        console.error("Google Gemini API Error:", error.response?.data || error.message);
-        await reply("❌ *Error connecting to Gemini AI. Please try again later.*");
-    }
-});
-
-
-cmd({
- pattern: "imagen",
-  alias: ["imggen", "dalle"],
-  react: "🎨",
-  desc: "Generate an AI image",
-  category: "ai",
-  filename: __filename
-}, async (conn, m, mek, { from, q, reply }) => {
-  try {
-    if (!q) return reply("❗ Please provide a prompt.\nExample: `.image A futuristic city`");
-
-    // Free image generation API (pollinations.ai)
-    const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(q)}`;
-
-    await conn.sendMessage(from, { image: { url: imageUrl }, caption: `🖼️ AI Generated Image\nPrompt: ${q}\n\n ${config.FOOTER}` }, { quoted: mek });
-  } catch (err) {
-    reply("⚠️ Image generation failed.");
-    console.error(err);
-  }
-});
-
-    cmd({
-        pattern: "blackbox",
-    react: "👾",
-    alias: ["bbox", "bb", "ai"],
-    desc: "Use BlackBox AI to get a response",
-    category: "ai",
-    use: "blackbox < query >",
-    filename: __filename
-},
-async (conn, mek, m, { from, reply, q }) => {
-    try {
-        if (!q) {
-            return await reply(queryMsg, '🧠');
-        }
-
-        const scraperData = await blackbox(q);
-        const apiData = await fetchJson("https://api.siputzx.my.id/api/ai/blackboxai-pro?content=" + q);
-        const result = scraperData ? scraperData : apiData?.data;
-        await reply(result, `🧠`);
-
-    } catch (e) {
-        await conn.sendMessage(from, { react: { text: '❌', key: mek.key } });
-        console.error(e);
-        await reply(errorMsg);
-    }
-});
-
-
-
+function _0xe962(){const _0x1683df=['6GlyBmr','❗\x20Please\x20provide\x20a\x20prompt.\x0aExample:\x20`.image\x20A\x20futuristic\x20city`','text','Generate\x20an\x20AI\x20image','379628TVdDSc','gemini\x20your\x20question`','2970535MGHfBN','\x0a\x0a\x20','candidates','@whiskeysockets/baileys','axios','trim','71352thaNEm','error','Use\x20Gemini\x20AI\x20to\x20get\x20a\x20response','../command','5769928mYwRqN','1468397rqgtGP','🖼️\x20AI\x20Generated\x20Image\x0aPrompt:\x20','FOOTER','❌\x20*Error\x20connecting\x20to\x20Gemini\x20AI.\x20Please\x20try\x20again\x20later.*','key','response','sendMessage','join','4213570KTAkNl','data','blackbox\x20<\x20query\x20>','parts','gemini','message','url','134628TbAoLY','../config','imggen','imagen','bbox','geminiai','1SZmjvv','dalle','../lib/functions','content','68mcBARQ'];_0xe962=function(){return _0x1683df;};return _0xe962();}function _0x1dd8(_0x316e77,_0x5d0511){const _0xe9624d=_0xe962();return _0x1dd8=function(_0x1dd85c,_0x417a09){_0x1dd85c=_0x1dd85c-0x1b7;let _0x203b87=_0xe9624d[_0x1dd85c];return _0x203b87;},_0x1dd8(_0x316e77,_0x5d0511);}const _0x4cf1d1=_0x1dd8;(function(_0x2bdfcc,_0x21efe7){const _0xa2e76c=_0x1dd8,_0xaa9797=_0x2bdfcc();while(!![]){try{const _0x42f80a=parseInt(_0xa2e76c(0x1d2))/0x1*(-parseInt(_0xa2e76c(0x1db))/0x2)+parseInt(_0xa2e76c(0x1cc))/0x3*(parseInt(_0xa2e76c(0x1d6))/0x4)+-parseInt(_0xa2e76c(0x1dd))/0x5+parseInt(_0xa2e76c(0x1d7))/0x6*(parseInt(_0xa2e76c(0x1bd))/0x7)+parseInt(_0xa2e76c(0x1bc))/0x8+-parseInt(_0xa2e76c(0x1b8))/0x9+-parseInt(_0xa2e76c(0x1c5))/0xa;if(_0x42f80a===_0x21efe7)break;else _0xaa9797['push'](_0xaa9797['shift']());}catch(_0x25b95a){_0xaa9797['push'](_0xaa9797['shift']());}}}(_0xe962,0x755ba));const config=require(_0x4cf1d1(0x1cd)),os=require('os'),axios=require(_0x4cf1d1(0x1e1)),mimeTypes=require('mime-types'),fs=require('fs'),path=require('path'),{generateForwardMessageContent,prepareWAMessageFromContent,generateWAMessageContent,generateWAMessageFromContent}=require(_0x4cf1d1(0x1e0)),{cmd,commands}=require(_0x4cf1d1(0x1bb)),{getBuffer,getGroupAdmins,getRandom,h2k,isUrl,Json,runtime,sleep,fetchJson}=require(_0x4cf1d1(0x1d4)),GEMINI_API_KEY='AIzaSyB8xtFPtvG_N9S7bBZZOSfTyZW8rQyJQkY',{URL}=require(_0x4cf1d1(0x1cb));cmd({'pattern':_0x4cf1d1(0x1c9),'react':'👾','alias':[_0x4cf1d1(0x1d1),'geminichat','ai2'],'desc':_0x4cf1d1(0x1ba),'category':'ai','use':'gemini\x20<\x20query\x20>','filename':__filename},async(_0x35a38e,_0x59baaf,_0x42677c,{from:_0x209713,args:_0x2d3c79,reply:_0x2cfc0b,prefix:_0x1b0c16})=>{const _0x141d4a=_0x4cf1d1,_0x29fe2f=_0x2d3c79[_0x141d4a(0x1c4)]('\x20');if(!_0x29fe2f)return await _0x2cfc0b(noInputMsg,'`'+_0x1b0c16+_0x141d4a(0x1dc));try{const _0x581fe0=await axios['post']('https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key='+GEMINI_API_KEY,{'contents':[{'parts':[{'text':_0x29fe2f}]}]}),_0x1f26c6=_0x581fe0[_0x141d4a(0x1c6)][_0x141d4a(0x1df)][0x0][_0x141d4a(0x1d5)][_0x141d4a(0x1c8)][0x0][_0x141d4a(0x1d9)][_0x141d4a(0x1b7)]();await _0x2cfc0b(''+_0x1f26c6);}catch(_0x5764c6){console[_0x141d4a(0x1b9)]('Google\x20Gemini\x20API\x20Error:',_0x5764c6[_0x141d4a(0x1c2)]?.[_0x141d4a(0x1c6)]||_0x5764c6[_0x141d4a(0x1ca)]),await _0x2cfc0b(_0x141d4a(0x1c0));}}),cmd({'pattern':_0x4cf1d1(0x1cf),'alias':[_0x4cf1d1(0x1ce),_0x4cf1d1(0x1d3)],'react':'🎨','desc':_0x4cf1d1(0x1da),'category':'ai','filename':__filename},async(_0x2eefa9,_0x2d45a9,_0x4b2369,{from:_0x1f111b,q:_0x54020c,reply:_0x51d4a8})=>{const _0x163596=_0x4cf1d1;try{if(!_0x54020c)return _0x51d4a8(_0x163596(0x1d8));const _0xccc058='https://image.pollinations.ai/prompt/'+encodeURIComponent(_0x54020c);await _0x2eefa9['sendMessage'](_0x1f111b,{'image':{'url':_0xccc058},'caption':_0x163596(0x1be)+_0x54020c+_0x163596(0x1de)+config[_0x163596(0x1bf)]},{'quoted':_0x4b2369});}catch(_0x2f513e){_0x51d4a8('⚠️\x20Image\x20generation\x20failed.'),console['error'](_0x2f513e);}}),cmd({'pattern':'blackbox','react':'👾','alias':[_0x4cf1d1(0x1d0),'bb','ai'],'desc':'Use\x20BlackBox\x20AI\x20to\x20get\x20a\x20response','category':'ai','use':_0x4cf1d1(0x1c7),'filename':__filename},async(_0x21a981,_0x25419e,_0x194de0,{from:_0x3f8d66,reply:_0x575d8f,q:_0x3329cc})=>{const _0xd25190=_0x4cf1d1;try{if(!_0x3329cc)return await _0x575d8f(queryMsg,'🧠');const _0x3fdbf0=await blackbox(_0x3329cc),_0x355ab7=await fetchJson('https://api.siputzx.my.id/api/ai/blackboxai-pro?content='+_0x3329cc),_0x368e9d=_0x3fdbf0?_0x3fdbf0:_0x355ab7?.[_0xd25190(0x1c6)];await _0x575d8f(_0x368e9d,'🧠');}catch(_0x193bb7){await _0x21a981[_0xd25190(0x1c3)](_0x3f8d66,{'react':{'text':'❌','key':_0x25419e[_0xd25190(0x1c1)]}}),console[_0xd25190(0x1b9)](_0x193bb7),await _0x575d8f(errorMsg);}});
