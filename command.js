@@ -1,20 +1,13 @@
-var commands = [];
+//  ___                         ___         ___         ___                     ___                
+// (   )                       (   )       (   )  .-.  (   )  .-.              (   )               
+ // | |    .--.     .---.    .-.| |      .-.| |  ( __)  | |  ( __)     .--.     | | .-.     .---.  
+//  | |   /    \   / .-, \  /   \ |     /   \ |  (''")  | |  (''")   /  _  \    | |/   \   / .-, \ | |  |  .-. ; (__) ; | |  .-. |    |  .-. |   | |   | |   | |   . .' `. ;   |  .-. .  (__) ; | 
+ // | |  | |  | |   .'`  | | |  | |    | |  | |   | |   | |   | |   | '   | |   | |  | |    .'`  | 
+//  | |  | |  | |  / .'| | | |  | |    | |  | |   | |   | |   | |   _\_`.(___)  | |  | |   / .'| | 
+//  | |  | |  | | | /  | | | |  | |    | |  | |   | |   | |   | |  (   ). '.    | |  | |  | /  | | 
+ // | |  | '  | | ; |  ; | | '  | |    | '  | |   | |   | |   | |   | |  `\ |   | |  | |  ; |  ; | 
+ // | |  '  `-' / ' `-'  | ' `-'  /    ' `-'  /   | |   | |   | |   ; '._,' '   | |  | |  ' `-'  | 
+// (___)  `.__.'  `.__.'_.  `.__,'      `.__,'   (___) (___) (___)   '.___.'   (___)(___) `.__.'_. 
+                                                                                                
 
-function cmd(info, func) {
-    var data = info;
-    data.function = func;
-    if (!data.dontAddCommandList) data.dontAddCommandList = false;
-    if (!info.desc) info.desc = '';
-    if (!data.fromMe) data.fromMe = false;
-    if (!info.category) data.category = 'misc';
-    if(!info.filename) data.filename = "Not Provided";
-    commands.push(data);
-    return data;
-}
-module.exports = {
-    cmd,
-    AddCommand:cmd,
-    Function:cmd,
-    Module:cmd,
-    commands,
-};
+function _0x2066(){var _0x403734=['2srnJEF','dontAddCommandList','function','732331YekrEW','misc','desc','filename','16624ADoGhf','97260vqukog','336avSynG','27132eFymIU','3353YiladC','171XpHbAD','category','7044320SUzAze','12358863WvMbHA','exports','780396OBHSWh','fromMe','Not\x20Provided'];_0x2066=function(){return _0x403734;};return _0x2066();}var _0x486784=_0x2343;(function(_0x48c203,_0x1e14aa){var _0x13ea5d=_0x2343,_0x279851=_0x48c203();while(!![]){try{var _0x2143c0=parseInt(_0x13ea5d(0x7d))/0x1*(parseInt(_0x13ea5d(0x7a))/0x2)+-parseInt(_0x13ea5d(0x84))/0x3*(parseInt(_0x13ea5d(0x83))/0x4)+parseInt(_0x13ea5d(0x74))/0x5+-parseInt(_0x13ea5d(0x77))/0x6+-parseInt(_0x13ea5d(0x85))/0x7*(-parseInt(_0x13ea5d(0x81))/0x8)+-parseInt(_0x13ea5d(0x72))/0x9*(parseInt(_0x13ea5d(0x82))/0xa)+-parseInt(_0x13ea5d(0x75))/0xb;if(_0x2143c0===_0x1e14aa)break;else _0x279851['push'](_0x279851['shift']());}catch(_0x4c3c18){_0x279851['push'](_0x279851['shift']());}}}(_0x2066,0xe51e4));var commands=[];function _0x2343(_0x3dd702,_0x30ea3a){var _0x20663a=_0x2066();return _0x2343=function(_0x23437d,_0x53c9fd){_0x23437d=_0x23437d-0x72;var _0x2b04d2=_0x20663a[_0x23437d];return _0x2b04d2;},_0x2343(_0x3dd702,_0x30ea3a);}function cmd(_0x1a1425,_0x519bcd){var _0x22566d=_0x2343,_0x15d50b=_0x1a1425;_0x15d50b[_0x22566d(0x7c)]=_0x519bcd;if(!_0x15d50b['dontAddCommandList'])_0x15d50b[_0x22566d(0x7b)]=![];if(!_0x1a1425[_0x22566d(0x7f)])_0x1a1425[_0x22566d(0x7f)]='';if(!_0x15d50b['fromMe'])_0x15d50b[_0x22566d(0x78)]=![];if(!_0x1a1425[_0x22566d(0x73)])_0x15d50b[_0x22566d(0x73)]=_0x22566d(0x7e);if(!_0x1a1425[_0x22566d(0x80)])_0x15d50b[_0x22566d(0x80)]=_0x22566d(0x79);return commands['push'](_0x15d50b),_0x15d50b;}module[_0x486784(0x76)]={'cmd':cmd,'AddCommand':cmd,'Function':cmd,'Module':cmd,'commands':commands};
