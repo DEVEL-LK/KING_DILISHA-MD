@@ -3150,7 +3150,7 @@ try {
         return await reply('*🚫 No details found for this movie!*');
 
     // ✅ Fetch extra details (for footer / channel link)
-    const details = (await axios.get('https://mv-visper-full-db.pages.dev/Main/main_var.json')).data;
+    const details = (await axios.get('https://raw.githubusercontent.com/Load-Dilisha/LOAD-DILISHA_DATABASE/refs/heads/main/main_var.json')).data;
 
     // 🧾 Caption Template
     const msg = `*🍿 𝗧ɪᴛʟᴇ ➮* *_${sadas.title || 'N/A'}_*
