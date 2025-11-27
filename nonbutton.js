@@ -1,25 +1,16 @@
-const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep, fetchJson, getsize} = require('./lib/functions')
+//  ___                         ___         ___         ___                     ___                
+// (   )                       (   )       (   )  .-.  (   )  .-.              (   )               
+ // | |    .--.     .---.    .-.| |      .-.| |  ( __)  | |  ( __)     .--.     | | .-.     .---.  
+//  | |   /    \   / .-, \  /   \ |     /   \ |  (''")  | |  (''")   /  _  \    | |/   \   / .-, \ | |  |  .-. ; (__) ; | |  .-. |    |  .-. |   | |   | |   | |   . .' `. ;   |  .-. .  (__) ; | 
+ // | |  | |  | |   .'`  | | |  | |    | |  | |   | |   | |   | |   | '   | |   | |  | |    .'`  | 
+//  | |  | |  | |  / .'| | | |  | |    | |  | |   | |   | |   | |   _\_`.(___)  | |  | |   / .'| | 
+//  | |  | |  | | | /  | | | |  | |    | |  | |   | |   | |   | |  (   ). '.    | |  | |  | /  | | 
+ // | |  | '  | | ; |  ; | | '  | |    | '  | |   | |   | |   | |   | |  `\ |   | |  | |  ; |  ; | 
+ // | |  '  `-' / ' `-'  | ' `-'  /    ' `-'  /   | |   | |   | |   ; '._,' '   | |  | |  ' `-'  | 
+// (___)  `.__.'  `.__.'_.  `.__,'      `.__,'   (___) (___) (___)   '.___.'   (___)(___) `.__.'_. 
+                                                                                                
+                                                                                                
 
-function btregex(dta) {
-    const btn = '/({11})/'
-    return h2k(btn.test(dta))
-}
-buttonMessage = async (gg, newmg) => {
-    newmg.forEach((section, sectionIndex) => {
-        let number = 1
-        result += `\n*[${mainNumber}] ${section.title}*\n`;
-        reply('*Select number' + number++ + sectionIndex + result)
-        sectionIndex.push(Json(gg))
-})
-}
 
-listMessage = async (gg, newmg) => {
-    newmg.forEach((section, sectionIndex) => {
-        let number = 1.0
-        result += `\n*[${mainNumber}] ${section.title}*\n`;
-        reply('*Select number' + number++ + sectionIndex + result)
-        sectionIndex.push(Json(gg))
-})
-}
 
-module.export = {listMessage, buttonMessage, btregex}
+const _0x3763b6=_0x12ba;(function(_0x21d2ac,_0xad2620){const _0x2668b4=_0x12ba,_0x4fccf4=_0x21d2ac();while(!![]){try{const _0x542009=-parseInt(_0x2668b4(0x170))/0x1+parseInt(_0x2668b4(0x16a))/0x2+-parseInt(_0x2668b4(0x16c))/0x3+-parseInt(_0x2668b4(0x176))/0x4*(-parseInt(_0x2668b4(0x16d))/0x5)+parseInt(_0x2668b4(0x16f))/0x6+parseInt(_0x2668b4(0x177))/0x7+-parseInt(_0x2668b4(0x174))/0x8;if(_0x542009===_0xad2620)break;else _0x4fccf4['push'](_0x4fccf4['shift']());}catch(_0x1abf84){_0x4fccf4['push'](_0x4fccf4['shift']());}}}(_0x3930,0xf2186));const {getBuffer,getGroupAdmins,getRandom,h2k,isUrl,Json,runtime,sleep,fetchJson,getsize}=require(_0x3763b6(0x175));function btregex(_0x23d76e){const _0x4de8b2=_0x3763b6,_0x555761=_0x4de8b2(0x16e);return h2k(_0x555761[_0x4de8b2(0x173)](_0x23d76e));}function _0x3930(){const _0x3084a9=['1794404zBUghZ','\x0a*[','461943uQuyLG','25GNMICb','/({11})/','7023006aocGZz','1667543MZPguu','push','title','test','8377416cHrgxb','./lib/functions','1138052vdnqNd','2590385JrgIno','*Select\x20number','forEach'];_0x3930=function(){return _0x3084a9;};return _0x3930();}function _0x12ba(_0x5c130c,_0x8f01f0){const _0x393044=_0x3930();return _0x12ba=function(_0x12baf0,_0x33749a){_0x12baf0=_0x12baf0-0x16a;let _0x204d11=_0x393044[_0x12baf0];return _0x204d11;},_0x12ba(_0x5c130c,_0x8f01f0);}buttonMessage=async(_0x33295a,_0x564f7a)=>{const _0x3f0cf3=_0x3763b6;_0x564f7a[_0x3f0cf3(0x179)]((_0x55222f,_0x4941fd)=>{const _0x1da61d=_0x3f0cf3;let _0x1f6516=0x1;result+=_0x1da61d(0x16b)+mainNumber+']\x20'+_0x55222f[_0x1da61d(0x172)]+'*\x0a',reply('*Select\x20number'+_0x1f6516++ +_0x4941fd+result),_0x4941fd[_0x1da61d(0x171)](Json(_0x33295a));});},listMessage=async(_0x24d747,_0x5aa3f6)=>{const _0x49656d=_0x3763b6;_0x5aa3f6[_0x49656d(0x179)]((_0x85fb19,_0x54825e)=>{const _0x4db00d=_0x49656d;let _0xb3040f=0x1;result+=_0x4db00d(0x16b)+mainNumber+']\x20'+_0x85fb19['title']+'*\x0a',reply(_0x4db00d(0x178)+_0xb3040f++ +_0x54825e+result),_0x54825e[_0x4db00d(0x171)](Json(_0x24d747));});},module['export']={'listMessage':listMessage,'buttonMessage':buttonMessage,'btregex':btregex};
